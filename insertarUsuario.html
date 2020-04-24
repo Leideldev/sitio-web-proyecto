@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script>
+        function llamarRegistro(){
+            var nombreServicio=$("#nameSercive").val();
+            var descripServicio=$("#descrip").val();
+            var costoServ=$("#costos").val();
+            var vendedor1="vendedor";
+             // AJAX
+             $.ajax({
+                    //Tipo de envio
+                    type: "GET",
+                    //URL destino
+                    url: "agregarServicio.php",
+                    //Datos a enviar
+                    data: {nameSercive:nombreServicio,descrip:descripServicio,costos:costoServ,vendedor:vendedor1},  // Se forma la cadena getusuario.php?nombre=2&&contra=dato2
+                    
+                    //Procesa Dato recibido
+                    success: function (data) {
+                        //Coloca el resultado en la pagina WEB
+                        $("#result").html(data);
+                    },
+                    
+                    //Procesa mensaje de error
+                    error: function (e) {
+                        //Coloca un mensaje en la pagina WEB
+                        $("#result").text("error:"+e.status+"error:"+e.statusText);
+                    }
+                });
+
+            }
+    </script>
+</head>
+<body>
+    <form id="formRegistro" method="get">
+        <input type="text" id="nameSercive" placeholder="Ingrese nombre del servicio">
+        <p>Descipcion del servicio</p>
+        <!--<input type="text" id="descrip" name="descrip" placeholder="descripción: "> -->
+        <textarea id="descrip" name="comentarios" rows="10" cols="40">Descripcion plis</textarea>
+        <input type="number" id="costos" name="costos" placeholder="costo" >
+        <input type="button" value="registrar" onclick="llamarRegistro();return false;">
+    </form>
+    <div id="result"></div>
+</body>
+</html>
