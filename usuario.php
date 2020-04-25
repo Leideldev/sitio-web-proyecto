@@ -57,6 +57,10 @@ public function setContrasena($contrasena){
     $this->contrasena = $contrasena;
 }
 
+public function verificarContrasena($contrasena){
+return password_verify($contrasena,$this->contrasena);
+}
+
 }
 
 ?>

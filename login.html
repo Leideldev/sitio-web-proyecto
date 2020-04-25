@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <form action="./controlador/controlador_usuario.php" method="POST">
-        <input type="text" placeholder="id" name="id">
+        <input type="text" placeholder="nombre usuario" name="nombre_usuario">
+        <input type="text" placeholder="contrase&ntilde;a" name="contrasena">
         <input type="submit"></input>
-        <input type="hidden" id="mandar" name="mandar" value="mostrarUsuarios">
+        <input type="hidden" id="mandar" name="mandar" value="login">
     </form>
 </body>
+
 </html>

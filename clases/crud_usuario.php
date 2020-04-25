@@ -1,8 +1,9 @@
 <?php 
 
 require_once('base_conexion.php');
+require_once('crud_interface.php');
 
-class crudUsuario{
+class crudUsuario implements crud{
 //Constructor de la clase
     public function __construct(){}
 //Funcion para insertar en la base de datos, se le pasa una variable de la clase Usuario y usa el metodo
@@ -16,20 +17,14 @@ class crudUsuario{
         $insercion->bindValue(':tipo_usuario',$usuario->getTipo());
         $insercion->bindValue(':nombre_usuario',$usuario->getNombreUsuario());
         $insercion->bindValue(':contrasena',$usuario->getContrasena());
-        $insercion->execute();
+        if ($insercion->execute()) { 
+            echo "Insertado";
+         } else {
+            echo "El nombre de usuario está siendo utilizado";
+         }
     }
 
-    public function insertarServicio($servicio){
-        $conexion = baseDatos::conectar();
-        $insercion= $conexion->prepare('Insert INTO servicios values(NULL, :nombre,:descrip,:costo,:trabajador,NULL)');
-        $insercion->bindValue(':nombre',$servicio->getNombreServicio());
-        $insercion->bindValue(':descrip',$servicio->getDescripcion());
-        $insercion->bindValue(':costo',$servicio->getCosto());
-        $insercion->bindValue(':trabajador',$servicio->getNombreDueno());
-        $insercion->execute();
-    }
-
-    public function obtenerUsuarioS($usuario){
+    public function obtenerLista(){
         $conexion = baseDatos::conectar();
         $listaUsuarios = [];
         $select = $conexion->prepare('SELECT * FROM usuarios');
@@ -41,13 +36,18 @@ class crudUsuario{
         return $listaUsuarios;
     }
 
-    public function obtenerUsuario($id){
+    public function obtenerElemento($nombre_usuario){
         $conexion = baseDatos::conectar();
-        $select=$conexion->prepare('SELECT * FROM usuarios WHERE id_usuario=:id');
-        $select->bindValue(':id',$id);
+        $select=$conexion->prepare('SELECT * FROM usuarios WHERE nombre_usuario=:nombre');
+        $select->bindValue(':nombre',$nombre_usuario);
         $select->execute();
         $usuarioBD = $select->fetch();
-        return new Usuario($usuarioBD['nombre'],$usuarioBD['apellido'],$usuarioBD['tipo_usuario'],$usuarioBD['nombre_usuario'],"");
+        if(!is_bool($usuarioBD)){
+            return new Usuario($usuarioBD['nombre'],$usuarioBD['apellido'],$usuarioBD['tipo_usuario'],$usuarioBD['nombre_usuario'],$usuarioBD['contrasena']);
+        }else{
+            echo "el usuario no existe";
+        }
+        
     }
 }
 
