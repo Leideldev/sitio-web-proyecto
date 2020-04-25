@@ -6,9 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/controlador/controlador_usuario.php" method="GET">
+    <form action="./controlador/controlador_usuario.php" method="POST">
         <input type="text" placeholder="id" name="id">
         <input type="submit"></input>
+        <input type="hidden" id="mandar" name="mandar" value="mostrarUsuarios">
     </form>
 </body>
 </html>

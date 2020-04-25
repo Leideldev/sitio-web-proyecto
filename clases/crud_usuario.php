@@ -19,6 +19,16 @@ class crudUsuario{
         $insercion->execute();
     }
 
+    public function insertarServicio($servicio){
+        $conexion = baseDatos::conectar();
+        $insercion= $conexion->prepare('Insert INTO servicios values(NULL, :nombre,:descrip,:costo,:trabajador,NULL)');
+        $insercion->bindValue(':nombre',$servicio->getNombreServicio());
+        $insercion->bindValue(':descrip',$servicio->getDescripcion());
+        $insercion->bindValue(':costo',$servicio->getCosto());
+        $insercion->bindValue(':trabajador',$servicio->getNombreDueno());
+        $insercion->execute();
+    }
+
     public function obtenerUsuarioS($usuario){
         $conexion = baseDatos::conectar();
         $listaUsuarios = [];

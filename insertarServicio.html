@@ -37,13 +37,15 @@
     </script>
 </head>
 <body>
-    <form id="formRegistro" method="get">
-        <input type="text" id="nameSercive" placeholder="Ingrese nombre del servicio">
+    <form action="./controlador/controlador_usuario.php" id="formRegistro" method="POST">
+        <input type="text" name="nameSercive" id="nameSercive" placeholder="Ingrese nombre del servicio">
         <p>Descipcion del servicio</p>
         <!--<input type="text" id="descrip" name="descrip" placeholder="descripción: "> -->
-        <textarea id="descrip" name="comentarios" rows="10" cols="40">Descripcion plis</textarea>
-        <input type="number" id="costos" name="costos" placeholder="costo" >
-        <input type="button" value="registrar" onclick="llamarRegistro();return false;">
+        <textarea id="descrip" name="descrip" rows="10" cols="40"></textarea>
+        <input type="number" name="costos" id="costos" name="costos" placeholder="costo" >
+        <input type="submit"></input>
+        <!--<input type="button" value="registrar" onclick="llamarRegistro();return false;">-->
+        <input type="hidden" id="mandar" name="mandar" value="registro">
     </form>
     <div id="result"></div>
 </body>
