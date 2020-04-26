@@ -14,7 +14,7 @@ if(isset($_POST['mandar']))
     }
     if($_POST['mandar']==="mostrarUsuarios")
     {   
-        $usuario = $crud->obtenerUsuario($_POST['id']);
+        $usuario = $crud->obtenerElemento($_POST['id']);
         echo $usuario->getNombre();
     }
     if($_POST['mandar']==="login")
@@ -32,8 +32,9 @@ if(isset($_POST['mandar']))
                else
                {
                 $_SESSION["tipo"]=$usuario->getTipo();
+                $_SESSION["nombre_usuario"]=$usuario->getNombreUsuario();
                }
-               //header("Location: http://localhost/sitio-web-proyecto/product.php");
+             
            }else{
             echo "Contraseña incorrecta";
            }         
