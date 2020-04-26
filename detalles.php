@@ -111,7 +111,7 @@ $servicio=$crud->obtenerElemento($_GET["id"]);
                 </li> 
                 <li class="list-group-item noBorder">
                     Vendedor
-                    <a href="http://localhost/perfil.php?usuario=<?php echo $servicio->getNombreDueno() ?>">
+                    <a href="perfil.php?usuario=<?php echo $servicio->getNombreDueno() ?>">
                     <h6 class="font-weight-bold my-2"><?php echo $servicio->getNombreDueno() ?></h6>
                     </a>
                 </li> 

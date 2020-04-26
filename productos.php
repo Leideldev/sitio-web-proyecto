@@ -58,7 +58,7 @@ $listaServicios=$crud->obtenerLista();
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="http://localhost/perfil.php">Perfil<span class="sr-only"></span></a>
+          <a class="nav-link" href="perfil.php">Perfil<span class="sr-only"></span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="productos.php">Servicios</a>
@@ -107,7 +107,7 @@ $listaServicios=$crud->obtenerLista();
                 <li class="list-group-item noBorder">
                     <div class="media">
                         <div class="media-body">
-                    <a href="http://localhost/detalles.php?id=<?php echo $servicio->getId() ?>"><h5 class="mt-0 font-weight-bold mb-2"><?php echo $servicio->getNombreServicio() ?></h5></a>
+                    <a href="detalles.php?id=<?php echo $servicio->getId() ?>"><h5 class="mt-0 font-weight-bold mb-2"><?php echo $servicio->getNombreServicio() ?></h5></a>
                             
                             <p class="font-italic text-muted mb-0 small"><?php echo $servicio->getDescripcion() ?></p>
                             <h6 class="font-weight-bold my-2"><?php echo $servicio->getCosto() ?></h6>
