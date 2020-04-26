@@ -50,9 +50,25 @@ $listaServicios=$crud->obtenerLista();
 
     <!-- Header -->  
     <header>
-        <div class="row">
-            <div class="col-12 p-4" style="background-color: #0b1023;"></div>
-        </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">Principal</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="http://localhost/perfil.php">Perfil<span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="productos.php">Servicios</a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        <a href="./login.html">Login</a>
+      </span>
+    </div>
+  </nav>
         <div class="row">
           <!-- Jumbotron que contiene imagen e input/button, remover el estilo en linea de jumbotron -->  
             <div class="col-12 col-no-padding" ><div class="jumbotron jumbotron-fluid" style="background-image: url(./img/paisaje.jpg);">
@@ -91,7 +107,7 @@ $listaServicios=$crud->obtenerLista();
                 <li class="list-group-item noBorder">
                     <div class="media">
                         <div class="media-body">
-                    <a href="http://localhost/sitio-web-proyecto/detalles.php?id=<?php echo $servicio->getId() ?>"><h5 class="mt-0 font-weight-bold mb-2"><?php echo $servicio->getNombreServicio() ?></h5></a>
+                    <a href="http://localhost/detalles.php?id=<?php echo $servicio->getId() ?>"><h5 class="mt-0 font-weight-bold mb-2"><?php echo $servicio->getNombreServicio() ?></h5></a>
                             
                             <p class="font-italic text-muted mb-0 small"><?php echo $servicio->getDescripcion() ?></p>
                             <h6 class="font-weight-bold my-2"><?php echo $servicio->getCosto() ?></h6>
