@@ -16,7 +16,7 @@ if(isset($_POST['mandar']))
         {
             if($_SESSION["tipo"]=="publicista")
             {
-                $servicio = new Servicio($_POST['nameSercive'],$_POST['descrip'],$_POST['costos'],"vendedor");
+                $servicio = new Servicio($_POST['nameSercive'],$_POST['descrip'],$_POST['costos'],$_SESSION['nombre_usuario']);
                 $crud->insertar($servicio);
                 echo "<span style='font-weight:bold;color:green;'>Servicio registrado<span>";
             }

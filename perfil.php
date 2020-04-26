@@ -3,10 +3,14 @@ require_once('./clases/crud_usuario.php');
 require_once('usuario.php');
 $crud=new crudUsuario();
 session_start();
-if(isset($_SESSION['nombre_usuario'])){
+if(isset($_GET["usuario"]))
+{
+  $usuario= $crud->obtenerElemento($_GET['usuario']);
+}
+else if(isset($_SESSION['nombre_usuario'])){
   $usuario= $crud->obtenerElemento($_SESSION['nombre_usuario']);
 }else{
-
+echo"asoidhbioasdhaiosdhsiodiuodabsAOISBHDIOASBDGIUOASBDAIUODBASUIO";
 }
 ?>
 <!DOCTYPE html>

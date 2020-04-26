@@ -26,6 +26,7 @@ if(isset($_POST['mandar']))
                session_start();
                if(!isset($_SESSION["tipo"])){
                 $_SESSION["tipo"]=$usuario->getTipo();
+                $_SESSION["nombre_usuario"]=$usuario->getNombreUsuario();
                }
                //un else para cambiar el tipo de usuario si ya hay uno conectado como aun no hay validacion lo use
                //** SE TENDRA QUE BORRAR NO ES NECESARIO */

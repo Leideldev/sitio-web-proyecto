@@ -15,8 +15,8 @@ public function __construct($nombreServicio,$descripcion,$costo,$nombreDueno)
     $this->costo = $costo;
     $this->nombreDueno = $nombreDueno;
  }
- public function setId($idEnvi){
-    $this->idEnvi = $idEnvi;
+ public function setId($id){
+    $this->id = $id;
 }
 public function getId(){
     return $this->id;

@@ -41,11 +41,13 @@ class crudServicio implements crud{
 
     public function obtenerElemento($id){
         $conexion = baseDatos::conectar();
-        $select=$conexion->prepare('SELECT * FROM usuarios WHERE id_usuario=:id');
+        $select=$conexion->prepare('SELECT * FROM servicios WHERE id_Servicio=:id');
         $select->bindValue(':id',$id);
         $select->execute();
         $usuarioBD = $select->fetch();
-        return new Usuario($usuarioBD['nombre'],$usuarioBD['apellido'],$usuarioBD['tipo_usuario'],$usuarioBD['nombre_usuario'],"");
+        $servicioLista = new Servicio($usuarioBD['nombre_servicio'],$usuarioBD['desc_servicio'],$usuarioBD['costo'],$usuarioBD['trabajador']);
+        $servicioLista->setId($usuarioBD['id_Servicio']);
+        return $servicioLista;
     }
 }
 
