@@ -18,17 +18,24 @@ class crudServicio implements crud{
         $insercion->bindValue(':trabajador',$servicio->getNombreDueno());
         $insercion->execute();
     }
+    public function eliminar($id){
+        $conexion=baseDatos::conectar();
+        $eliminar=$conexion->prepare('DELETE FROM servicios WHERE id_Servicio=:id');
+        $eliminar->bindValue(':id',$id);
+        $eliminar->execute();
+    }
 
-  /*  public function obtenerLista(){
+    public function obtenerLista(){
         $conexion = baseDatos::conectar();
-        $listaUsuarios = [];
-        $select = $conexion->prepare('SELECT * FROM usuarios');
-
+        $listaServe = [];
+        $select = $conexion->query('SELECT * FROM servicios');
         foreach($select->fetchAll() as $usuarioBD){
-            $usuarioLista = new Usuario($usuarioBD['nombre'],$usuarioBD['apellido'],$usuarioBD['tipo_usuario'],$usuarioBD['nombre_usuario']);
-            $listaUsuarios[] = $usuarioLista;
+            //$servicio = new Servicio($_POST['nameSercive'],$_POST['descrip'],$_POST['costos'],"vendedor")
+            $servicioLista = new Servicio($usuarioBD['nombre_servicio'],$usuarioBD['desc_servicio'],$usuarioBD['costo'],$usuarioBD['trabajador']);
+            $servicioLista->setId($usuarioBD['id_Servicio']);
+            $listaServe[] = $servicioLista;
         }
-        return $listaUsuarios;
+        return $listaServe;
     }
 
     public function obtenerElemento($id){
@@ -38,7 +45,7 @@ class crudServicio implements crud{
         $select->execute();
         $usuarioBD = $select->fetch();
         return new Usuario($usuarioBD['nombre'],$usuarioBD['apellido'],$usuarioBD['tipo_usuario'],$usuarioBD['nombre_usuario'],"");
-    }*/
+    }
 }
 
 

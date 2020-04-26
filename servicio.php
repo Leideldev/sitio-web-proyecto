@@ -2,7 +2,7 @@
 <?php 
 class Servicio
 {
-//public $id;
+public $id;
 public $nombreServicio;
 public $descripcion;
 public $costo;
@@ -15,6 +15,13 @@ public function __construct($nombreServicio,$descripcion,$costo,$nombreDueno)
     $this->costo = $costo;
     $this->nombreDueno = $nombreDueno;
  }
+ public function setId($idEnvi){
+    $this->idEnvi = $idEnvi;
+}
+public function getId(){
+    return $this->id;
+}
+
  public function setNombreServicio($nombreServicio){
     $this->nombreServicio = $nombreServicio;
 }

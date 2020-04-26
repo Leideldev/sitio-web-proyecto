@@ -28,6 +28,13 @@ if(isset($_POST['mandar']))
                if(!isset($_SESSION["tipo"])){
                 $_SESSION["tipo"]=$usuario->getTipo();
                }
+               //un else para cambiar el tipo de usuario si ya hay uno conectado como aun no hay validacion lo use
+               //** SE TENDRA QUE BORRAR NO ES NECESARIO */
+               else
+               {
+                $_SESSION["tipo"]=$usuario->getTipo();
+               }
+               
            }else{
             echo "Contraseña incorrecta";
            }         
