@@ -1,6 +1,5 @@
 <?php
 
-require_once('../clases/crud_usuario.php');
 require_once('../clases/crud_servicio.php');
 require_once('../usuario.php');
 require_once('../servicio.php');

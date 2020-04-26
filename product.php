@@ -1,3 +1,13 @@
+<?php
+//incluye la clase Libro y CrudLibro
+require_once('./clases/crud_servicio.php');
+require_once('servicio.php');
+$crud=new crudServicio();
+$servicio= new Servicio("","","","  ");
+//obtiene todos los libros con el método mostrar de la clase crud
+$listaServicios=$crud->obtenerLista();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,34 +62,19 @@
             <!-- Lista de productos-->
             <ul class="list-group">
                 <!-- Elemento de lista-->
+                <?php foreach ($listaServicios as $servicio) {?>
                 <li class="list-group-item noBorder">
                     <div class="media">
                         <div class="media-body">
-                            <h5 class="mt-0 font-weight-bold mb-2">Nombre producto</h5>
-                            <p class="font-italic text-muted mb-0 small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit fuga autem maiores necessitatibus.</p>
-                            <h6 class="font-weight-bold my-2">$120.00</h6>
+                            <h5 class="mt-0 font-weight-bold mb-2"><?php echo $servicio->getNombreServicio() ?></h5>
+                            <p class="font-italic text-muted mb-0 small"><?php echo $servicio->getDescripcion() ?></p>
+                            <h6 class="font-weight-bold my-2"><?php echo $servicio->getCosto() ?></h6>
                         </div>
                         <img src="./img/paisaje.jpg" alt="">   
                     </div>   
                 </li>
-                <!-- Elemento de lista-->
-                <li class="list-group-item noBorder"><div class="media">
-                    <div class="media-body">
-                        <h5 class="mt-0 font-weight-bold mb-2">Nombre producto</h5>
-                        <p class="font-italic text-muted mb-0 small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit fuga autem maiores necessitatibus.</p>
-                        <h6 class="font-weight-bold my-2">$120.00</h6>
-                    </div>
-                    <img src="./img/paisaje.jpg" alt="">   
-                </div>   </li>
-                <!-- Elemento de lista-->
-                <li class="list-group-item noBorder"><div class="media">
-                    <div class="media-body">
-                        <h5 class="mt-0 font-weight-bold mb-2">Nombre producto</h5>
-                        <p class="font-italic text-muted mb-0 small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit fuga autem maiores necessitatibus.</p>
-                        <h6 class="font-weight-bold my-2">$120.00</h6>
-                    </div>
-                    <img src="./img/paisaje.jpg" alt="">   
-                </div>   </li>          
+                <?php }?>
+                <!-- Elemento de lista--> 
               </ul>
         </div>
     </div>

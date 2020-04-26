@@ -1,6 +1,7 @@
 <?php 
 
 require_once('base_conexion.php');
+require_once('crud_interface.php');
 
 class crudServicio implements crud{
 //Constructor de la clase
