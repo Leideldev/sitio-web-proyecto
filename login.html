@@ -2,18 +2,40 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Simple Login Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/custom.css">
+
+    </style>
 </head>
 
 <body>
-    <form action="./controlador/controlador_usuario.php" method="POST">
-        <input type="text" placeholder="nombre usuario" name="nombre_usuario">
-        <input type="text" placeholder="contrase&ntilde;a" name="contrasena">
-        <input type="submit"></input>
-        <input type="hidden" id="mandar" name="mandar" value="login">
-    </form>
+    <div class="login-form">
+        <form action="controlador/controlador_usuario.php" method="post">
+            <h2 class="text-center">Login</h2>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Usuario" required="required" name="nombre_usuario">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Contrase&ntilde;a" required="required"
+                    name="contrasena">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </div>
+            <input type="hidden" id="mandar" name="mandar" value="login">
+            <div class="clearfix">
+                <label class="pull-left checkbox-inline"><input type="checkbox">Recordarme</label>
+                <a href="#" class="pull-right">¿Olvidaste tu contrase&ntilde;a</a>
+            </div>
+        </form>
+        <p class="text-center"><a href="#">Crear una cuenta</a></p>
+    </div>
 </body>
 
 </html>
