@@ -18,6 +18,31 @@ $listaServicios=$crud->obtenerLista();
     <link rel="stylesheet" type="text/css" href="./css/custom.css">
     <script src="./js/jquery-3.4.1.js"></script>
     <script src="./js/bootstrap.js"></script>
+    <script>
+        function ActualizarLista()
+        {
+            $.ajax({
+                    //Tipo de envio
+                    type: "POSt",
+                    //URL destino
+                    url: "./controlador/controlador_servicio.php",
+                    //Datos a enviar
+                    data: {mandar:"consultar"},  // Se forma la cadena getusuario.php?q=2
+                    
+                    //Procesa Dato recibido
+                    success: function (data) {
+                        //Coloca el resultado en la pagina WEB
+                        $(".list-group").html(data);
+                    },
+                    
+                    //Procesa mensaje de error
+                    error: function (e) {
+                        //Coloca un mensaje en la pagina WEB
+                        $("#result").text("error:"+e.status+"error:"+e.statusText);
+                    }
+                });
+        }
+    </script>
     <link rel="stylesheet" href="./css/font-awesome.min.css">
 </head>
 <body>
@@ -74,6 +99,13 @@ $listaServicios=$crud->obtenerLista();
                     </div>   
                 </li>
                 <?php }?>
+                <li class="list-group-item noBorder">
+                    <div class="media">
+                        <div class="media-body">
+                        </div>
+                        <button onclick="ActualizarLista();return false;">actualizar</button>
+                    </div>   
+                </li>
                 <!-- Elemento de lista--> 
               </ul>
         </div>

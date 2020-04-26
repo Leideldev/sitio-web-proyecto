@@ -33,10 +33,14 @@ if(isset($_POST['mandar']))
                {
                 $_SESSION["tipo"]=$usuario->getTipo();
                }
-               
+               //header("Location: http://localhost/sitio-web-proyecto/product.php");
            }else{
             echo "Contraseña incorrecta";
            }         
+        }
+        else
+        {
+           //echo "Usuario no existe";
         }
     }
 }
