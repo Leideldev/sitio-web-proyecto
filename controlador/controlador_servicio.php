@@ -34,11 +34,11 @@ if(isset($_POST['mandar']))
                 echo "<li class='list-group-item noBorder'>";
                 echo "   <div class='media'>";
                 echo "        <div class='media-body'>";
-                echo "            <h5 class='mt-0 font-weight-bold mb-2'>".$servicioEnLista->getNombreServicio() ."</h5> ";
+                echo "    <a href='detalles.php?id=".$servicioEnLista->getId()."'>    <h5 class='mt-0 font-weight-bold mb-2'>".$servicioEnLista->getNombreServicio() ."</h5></a> ";
                 echo "            <p class='font-italic text-muted mb-0 small'>".$servicioEnLista->getDescripcion() ."</p>";
                 echo "            <h6 class='font-weight-bold my-2'>".$servicioEnLista->getCosto()."</h6>";
                 echo "        </div>";
-                echo "        <img src='./img/paisaje.jpg' alt=''>"   ;
+                echo "        <img title='Turismo en Ahome' alt='Evento turistico en Ahome' onclick=".'"'."location.href ='http://localhost/sitio-web-proyecto/detalles.php?id=".$servicioEnLista->getId()." ';".'"'." src='./img/paisaje.jpg' alt=''>"   ;
                 echo "    </div>   ";
                 echo "</li>";
             }

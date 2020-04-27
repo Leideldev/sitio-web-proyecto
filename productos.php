@@ -13,7 +13,8 @@ $listaServicios=$crud->obtenerLista();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="Eventos turisticos de ahome ">
+    <title>Servicio turisticos en Ahome</title>
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="./css/custom.css">
     <script src="./js/jquery-3.4.1.js"></script>
@@ -107,13 +108,13 @@ $listaServicios=$crud->obtenerLista();
                 <li class="list-group-item noBorder">
                     <div class="media">
                         <div class="media-body">
-                    <a href="detalles.php?id=<?php echo $servicio->getId() ?>"><h5 class="mt-0 font-weight-bold mb-2"><?php echo $servicio->getNombreServicio() ?></h5></a>
+                    <a href='detalles.php?id=<?php echo $servicio->getId() ?>'><h5 class="mt-0 font-weight-bold mb-2"><?php echo $servicio->getNombreServicio() ?></h5></a>
                             
                             <p class="font-italic text-muted mb-0 small"><?php echo $servicio->getDescripcion() ?></p>
                             <h6 class="font-weight-bold my-2"><?php echo $servicio->getCosto() ?></h6>
                         </div>
                         
-                        <img onclick="location.href ='http://localhost/sitio-web-proyecto/detalles.php?id=<?php echo $servicio->getId() ?>';" src="./img/paisaje.jpg" alt="">   
+                        <img  title="Evento turistico en Ahome" alt="Turismo en Ahome" onclick="location.href ='http://localhost/sitio-web-proyecto/detalles.php?id=<?php echo $servicio->getId() ?>';" src="./img/paisaje.jpg" alt="">   
                     </div>   
                 </li>
                 <?php }?>
