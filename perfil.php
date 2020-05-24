@@ -10,7 +10,9 @@ if(isset($_GET["usuario"]))
 else if(isset($_SESSION['nombre_usuario'])){
   $usuario= $crud->obtenerElemento($_SESSION['nombre_usuario']);
 }else{
-echo"asoidhbioasdhaiosdhsiodiuodabsAOISBHDIOASBDGIUOASBDAIUODBASUIO";
+  header("Status: 301 Moved Permanently");
+  header("Location: http://localhost/sitio-web-proyecto/login.html");
+  exit;
 }
 ?>
 <!DOCTYPE html>

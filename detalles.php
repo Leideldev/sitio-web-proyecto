@@ -115,6 +115,12 @@ $servicio=$crud->obtenerElemento($_GET["id"]);
                     <h6 class="font-weight-bold my-2"><?php echo $servicio->getNombreDueno() ?></h6>
                     </a>
                 </li> 
+                <li class="list-group-item noBorder">
+                   
+                    <a href="compra.php?evento=<?php echo $servicio->getId() ?>">
+                    <input class="btn btn-primary" type="submit" value="Comprar" onclick="false;"></input>
+                    </a>
+                </li> 
                 <!-- Elemento de lista--> 
               </ul>
         </div>
