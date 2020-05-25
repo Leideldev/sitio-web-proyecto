@@ -2,6 +2,7 @@
 
 class Usuario
 {
+ public $id_usuario;
  public $nombre;
  public $apellido;
  public $tipo;
@@ -16,7 +17,13 @@ class Usuario
      $this->nombreUsuario = $nombreUsuario;
      $this->contrasena = $contrasena;
  }
- 
+ public function setid_usuario($id_usuario){
+    $this->id_usuario = $id_usuario;
+}
+
+public function getid_usuario(){
+   return $this->id_usuario;
+}
  public function getNombre(){
      return $this->nombre;
  }

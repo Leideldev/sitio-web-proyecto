@@ -1,11 +1,16 @@
 <?php 
 //incluye la clase Libro y CrudLibro
 require_once('./clases/crud_servicio.php');
+require_once('./clases/crud_horarios.php');
 require_once('servicio.php');
+require_once('horario.php');
 $crud=new crudServicio();
-$servicio= new Servicio("","","","  ");
+$crud_horario = new crudHorario();
+$servicio= new Servicio("","",""," ");
+$horario = new Horario("","","","","");
 //obtiene todos los libros con el método mostrar de la clase crud
 $servicio=$crud->obtenerElemento($_GET["evento"]);
+$horario=$crud_horario->obtenerElemento($_GET["evento"]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,20 +23,20 @@ $servicio=$crud->obtenerElemento($_GET["evento"]);
     <script src="./js/jquery-3.4.1.js"></script>
     <script src="./js/bootstrap.js"></script>
     <script>
-        function ActualizarLista()
+        function RealizarCompra()
         {
             $.ajax({
                     //Tipo de envio
-                    type: "POSt",
+                    type: "POST",
                     //URL destino
-                    url: "./controlador/controlador_servicio.php",
+                    url: "./controlador/controlador_reservaciones.php",
                     //Datos a enviar
-                    data: {mandar:"consultar"},  // Se forma la cadena getusuario.php?q=2
+                    data: $("#formularioCompra").serialize(),  
                     
                     //Procesa Dato recibido
                     success: function (data) {
                         //Coloca el resultado en la pagina WEB
-                        $(".list-group").html(data);
+                        $("#result").html(data);;
                     },
                     
                     //Procesa mensaje de error
@@ -44,21 +49,27 @@ $servicio=$crud->obtenerElemento($_GET["evento"]);
     </script>
 </head>
 <body>
-    <form action="./verificar_Compra.php" method="post">
+    <form id="formularioCompra" action="./verificar_Compra.php" method="POST">
         <h2>Nombre producto</h2>
         <p name="servicio"><?php echo $servicio->getNombreServicio() ?></p>
         <input type="hidden" id="servicio" name="servicio" value="<?php echo $servicio->getNombreServicio() ?>">
         <h2>Precio</h2>
         <p name="costo"><?php echo $servicio->getCosto() ?></p>
         <input type="hidden" id="costo" name="costo" value="<?php echo $servicio->getCosto() ?>">
-        <h2>Horarios</h2>
-        <input type="date" name="" id="" min="2018-03-25" max="2018-05-25" step="2">
-        <input type="datetime-local" name="fecha" id="fecha" min="2018-06-01T00:00" 
-        pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}"
-        max="2018-06-30T00:00">
+        <h2>capacidad por evento: <?php echo $horario->getcapacidad() ?></h2>
+        <input type="number" name="cupos" id="cupos" max="<?php echo $horario->getcapacidad() ?>">
+        <h2>Horarios: <?php echo $horario->getDias() ?></h2>
+        <h2>Desde: <?php echo $horario->getDe() ?></h2>
+        <h2>Hasta: <?php echo $horario->getpara() ?></h2>
+       
+        <input type="date" name="dia" id="dia" min="2020-01-01" max="2020-12-31" >
+        <input type="time" name="hora" id="hora" min="<?php echo $horario->getDe() ?>" max="<?php echo $horario->getpara() ?>">
         
-        <input type="hidden" id="vendedor" name="vendedor" value="<?php echo $servicio->getNombreDueno() ?>">
-        <input class="btn btn-primary" type="submit" value="Verificar" onclick="false;"></input>
+        <input class="btn btn-primary" type="submit" value="Verificar" onclick="RealizarCompra();return false;"></input>
+        <input type="hidden" id="mandar" name="mandar" value="compra">
+        <input type="hidden" id="id_servicio" name="id_servicio" value="<?php echo $servicio->getId() ?>">
+        <input type="hidden" id="nombre_vendedor" name="nombre_vendedor" value="<?php echo $servicio->getNombreDueno() ?>">
     </form>
+    <div id="result"></div>
 </body>
 </html>

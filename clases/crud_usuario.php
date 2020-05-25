@@ -43,7 +43,10 @@ class crudUsuario implements crud{
         $select->execute();
         $usuarioBD = $select->fetch();
         if(!is_bool($usuarioBD)){
-            return new Usuario($usuarioBD['nombre'],$usuarioBD['apellido'],$usuarioBD['tipo_usuario'],$usuarioBD['nombre_usuario'],$usuarioBD['contrasena']);
+            $usuarioLista = new Usuario($usuarioBD['nombre'],$usuarioBD['apellido'],$usuarioBD['tipo_usuario'],$usuarioBD['nombre_usuario'],$usuarioBD['contrasena']);
+            $usuarioLista->setid_usuario($usuarioBD['id_usuario']);
+            return $usuarioLista;
+            //return new Usuario($usuarioBD['nombre'],$usuarioBD['apellido'],$usuarioBD['tipo_usuario'],$usuarioBD['nombre_usuario'],$usuarioBD['contrasena']);
         }else{
             echo "el usuario no existe";
         }

@@ -16,11 +16,15 @@ if(isset($_POST["costo"])){
     $costo = $_POST["costo"];
     echo $costo, "\n";
 }
-if(isset($_POST["fecha"])){
-    $fecha = $_POST["fecha"];
-    echo $fecha, "\n";
-    $timestamp = strtotime($fecha);
-    echo $timestamp;
+if(isset($_POST["dia"])){
+    $nombredia= $_POST["dia"];
+    $dias = array('', 'Lunes','Martes','Miercoles','Jueves','Viernes','Sabado', 'Domingo');
+    $fecha = $dias[date('N', strtotime($nombredia))];
+    echo $fecha;
+}
+if(isset($_POST["hora"])){
+    $horaSeleccionada= $_POST["hora"];
+    echo $horaSeleccionada;
 }
 if(isset($_POST["vendedor"])){
     $nombreVendedor = $_POST["vendedor"];
@@ -31,5 +35,5 @@ if(isset($_SESSION['nombre_usuario']))
     echo $_SESSION['nombre_usuario'], "\n";
 }
 
-//echo $lala+"---"+$lala2+"---"+$lala3;
+
 ?>

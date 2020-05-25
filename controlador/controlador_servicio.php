@@ -1,10 +1,13 @@
 <?php
 
 require_once('../clases/crud_servicio.php');
+require_once('../clases/crud_horarios.php');
 require_once('../usuario.php');
 require_once('../servicio.php');
+require_once('../horario.php');
 
 $crud = new crudServicio();
+$crud_horario = new crudHorario();
 //echo"1";
 if(isset($_POST['mandar']))
 {
@@ -18,7 +21,31 @@ if(isset($_POST['mandar']))
             {
                 $servicio = new Servicio($_POST['nameSercive'],$_POST['descrip'],$_POST['costos'],$_SESSION['nombre_usuario']);
                 $crud->insertar($servicio);
+                //busco todos los servicicos
+                $listaDeservicio = $crud->obtenerLista();
+                //consigo el ultimo agrego y le saco su id
+                $last = end($listaDeservicio);
+                $ultimoId = $last->getId();
+                //creo un horario y lo inserto
+                //$id_servicio,$de,$para,$dias,$capacidad
+                $dias=concatenacionDeDias();
+                $horario = new Horario($ultimoId,$_POST['de'],$_POST['para'],$dias,$_POST['capa']);
+                $crud_horario->insertar($horario);
+                //$id_servicio,$de,$para,$dias
+               
+                /*$de = $_POST['de'];
+                $para = $_POST['para'];
+                $capa = $_POST['capa'];*/
                 echo "<span style='font-weight:bold;color:green;'>Servicio registrado<span>";
+               /*echo "Luenes--- ".$lunes; 
+            echo "MAr--- ".$martes; 
+            echo "Mier--- ".$miercoles; 
+            echo "J-- ".$jueves; 
+            echo "V --".$viernes; 
+            echo "S-- ".$sabado; 
+             echo "D ---".$domingo; 
+            echo "DE-- ".$de; 
+            echo "PARA --".$para; */
             }
         }
     }
@@ -57,6 +84,39 @@ if(isset($_POST['mandar']))
 else
 {
     echo"123";
+}
+
+function concatenacionDeDias(){
+    $dias = '';
+    if(isset($_POST['Lunes']))
+    {
+        $dias.= $_POST['Lunes']."-";
+    }
+    if(isset($_POST['Martes']))
+    {
+        $dias.= $_POST['Martes']."-";
+    }
+    if(isset($_POST['Miercoles']))
+    {
+        $dias.= $_POST['Miercoles']."-";
+    }
+    if(isset($_POST['Jueves']))
+    {
+        $dias.= $_POST['Jueves']."-";
+    }
+    if(isset($_POST['Viernes']))
+    {
+        $dias.= $_POST['Viernes']."-";
+    }
+    if(isset($_POST['Sabado']))
+    {
+        $dias.= $_POST['Sabado']."-";
+    }
+    if(isset($_POST['Domingo']))
+    {
+        $dias.= $_POST['Domingo']."-";
+    }
+    return $dias;
 }
 
 
