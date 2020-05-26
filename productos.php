@@ -29,13 +29,13 @@ $listaServicios=$crud->obtenerLista();
                     url: "./controlador/controlador_servicio.php",
                     //Datos a enviar
                     data: {mandar:"consultar"},  // Se forma la cadena getusuario.php?q=2
-                    
+
                     //Procesa Dato recibido
                     success: function (data) {
                         //Coloca el resultado en la pagina WEB
                         $(".list-group").html(data);
                     },
-                    
+
                     //Procesa mensaje de error
                     error: function (e) {
                         //Coloca un mensaje en la pagina WEB
@@ -45,11 +45,34 @@ $listaServicios=$crud->obtenerLista();
         }
     </script>
     <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <style media="screen">
+      .mid{
+        border-top: 0;
+        border-bottom: 0;
+        border-left: 2px;
+        border-right: 2px;
+        border-style: groove;
+        border-color: #c9c9c9;
+
+      }
+      .mid ul li{
+        border-bottom: 2px;
+        border-style: dashed;
+        border-color: #c9c9c9;
+      }
+      h2{
+        margin: auto;
+        margin-bottom: 30px;
+      }
+      h6{
+        color: red;
+      }
+    </style>
 </head>
 <body>
 <div class="container-fluid">
 
-    <!-- Header -->  
+    <!-- Header -->
     <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="index.html">Principal</a>
@@ -71,10 +94,10 @@ $listaServicios=$crud->obtenerLista();
     </div>
   </nav>
         <div class="row">
-          <!-- Jumbotron que contiene imagen e input/button, remover el estilo en linea de jumbotron -->  
+          <!-- Jumbotron que contiene imagen e input/button, remover el estilo en linea de jumbotron -->
             <div class="col-12 col-no-padding" ><div class="jumbotron jumbotron-fluid" style="background-image: url(./img/paisaje.jpg);">
                 <div class="container">
-                  <!-- Inputs y button en un grupo 
+                  <!-- Inputs y button en un grupo
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Product name...">
                         <select class="custom-select" id="inputGroupSelect04">
@@ -94,13 +117,14 @@ $listaServicios=$crud->obtenerLista();
         </header>
 
 
-   <div class="container py-3"></div>
+  <!-- <div class="container py-3"></div>-->
 <!-- Contenedor de lista-->
-    <div class="container py-5">
+    <div class="container py-2">
 
     <div class="row">
+             <h2>Elige un Servicio ahora mismo</h2>
         <!-- Columna grande ajustada derecha izquierda-->
-        <div class="col-lg-8 mx-auto">
+        <div class="col-lg-8 mx-auto mid">
             <!-- Lista de productos-->
             <ul class="list-group">
                 <!-- Elemento de lista-->
@@ -109,13 +133,13 @@ $listaServicios=$crud->obtenerLista();
                     <div class="media">
                         <div class="media-body">
                     <a href='detalles.php?id=<?php echo $servicio->getId() ?>'><h5 class="mt-0 font-weight-bold mb-2"><?php echo $servicio->getNombreServicio() ?></h5></a>
-                            
+
                             <p class="font-italic text-muted mb-0 small"><?php echo $servicio->getDescripcion() ?></p>
-                            <h6 class="font-weight-bold my-2"><?php echo $servicio->getCosto() ?></h6>
+                            <h6 class="font-weight-bold my-2">$ <?php echo $servicio->getCosto() ?></h6>
                         </div>
-                        
-                        <img  title="Evento turistico en Ahome" alt="Turismo en Ahome" onclick="location.href ='http://localhost/sitio-web-proyecto/detalles.php?id=<?php echo $servicio->getId() ?>';" src="./img/paisaje.jpg" alt="">   
-                    </div>   
+
+                        <img  title="Evento turistico en Ahome" alt="Turismo en Ahome" onclick="location.href ='http://localhost/sitio-web-proyecto/detalles.php?id=<?php echo $servicio->getId() ?>';" src="./img/paisaje.jpg" alt="">
+                    </div>
                 </li>
                 <?php }?>
                 <li class="list-group-item noBorder">
@@ -123,9 +147,9 @@ $listaServicios=$crud->obtenerLista();
                         <div class="media-body">
                         </div>
                         <button onclick="ActualizarLista();return false;">actualizar</button>
-                    </div>   
+                    </div>
                 </li>
-                <!-- Elemento de lista--> 
+                <!-- Elemento de lista-->
               </ul>
         </div>
     </div>
@@ -138,9 +162,9 @@ $listaServicios=$crud->obtenerLista();
             <div class="col-lg-8 mx-auto">
                 <div class="card card-no-border">
                     <div class="card-header card-header-style mb-5"><div class="media">
-                        <img src="./img/descarga.png" alt="" class="img-circle comment-img mr-3">                  
-                           <div class="media-body">                                       
-                               <input class="form-control form-control-sm" type="text" placeholder="Add a comment..">   
+                        <img src="./img/descarga.png" alt="" class="img-circle comment-img mr-3">
+                           <div class="media-body">
+                               <input class="form-control form-control-sm" type="text" placeholder="Add a comment..">
                                <div class="row ">
                                 <div class="col-6 d-flex flex-row justify-content-start align-self-center">
                                     <span class="fa fa-star checked"></span>
@@ -150,12 +174,12 @@ $listaServicios=$crud->obtenerLista();
                                 <span class="fa fa-star"></span>
                                 </div>
                                 <div class="col-6 d-flex flex-row justify-content-end align-self-center mt-1">
-                                    <button type="button" class="btn btn-secondary btn-sm">Comment</button></div></div>                          
-                           </div>      
+                                    <button type="button" class="btn btn-secondary btn-sm">Comment</button></div></div>
+                           </div>
                        </div> </div>
                     <div class="card-body">
                         <div class="media">
-                         <img src="./img/descarga.png" alt="" class="img-circle comment-img mr-3">                  
+                         <img src="./img/descarga.png" alt="" class="img-circle comment-img mr-3">
                             <div class="media-body">
                                 <div class="row "><div class="col-6">
                                     <h5 class="card-title small font-weight-bold">Username 4h ago </h5>
@@ -167,13 +191,13 @@ $listaServicios=$crud->obtenerLista();
                                 <span class="fa fa-star"></span>
                                 <span class="fa fa-star"></span>
                                 </div></div>
-                                
+
                                 <p class="mb-0 small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit fuga autem maiores necessitatibus.</p>
                                 <hr>
-                            </div>      
-                        </div> 
+                            </div>
+                        </div>
                         <div class="media">
-                            <img src="./img/descarga.png" alt="" class="img-circle comment-img mr-3">                  
+                            <img src="./img/descarga.png" alt="" class="img-circle comment-img mr-3">
                                <div class="media-body">
                                 <div class="row "><div class="col-6">
                                     <h5 class="card-title small font-weight-bold">Username 4h ago </h5>
@@ -186,11 +210,11 @@ $listaServicios=$crud->obtenerLista();
                                 <span class="fa fa-star"></span>
                                 </div></div>
                                    <p class="mb-0 small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit fuga autem maiores necessitatibus.</p>
-                                   <hr>                                   
-                               </div>                        
-                           </div> 
+                                   <hr>
+                               </div>
+                           </div>
                            <div class="media">
-                            <img src="./img/descarga.png" alt="" class="img-circle comment-img mr-3">                  
+                            <img src="./img/descarga.png" alt="" class="img-circle comment-img mr-3">
                                <div class="media-body">
                                 <div class="row "><div class="col-6">
                                     <h5 class="card-title small font-weight-bold">Username 4h ago </h5>
@@ -204,8 +228,8 @@ $listaServicios=$crud->obtenerLista();
                                 </div></div>
                                    <p class="mb-0 small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit fuga autem maiores necessitatibus.</p>
                                    <hr>
-                               </div>                      
-                           </div> 
+                               </div>
+                           </div>
                     </div>
                 </div>
             </div>
