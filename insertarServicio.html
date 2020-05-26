@@ -27,15 +27,15 @@
                     url: "./controlador/controlador_servicio.php",
                     //Datos a enviar
                     //data: {mandar:"registro",nameSercive:nombreServicio,descrip:descripServicio,costos:costoServ,vendedor:vendedor1},  // Se forma la cadena getusuario.php?nombre=2&&contra=dato2
-                    data: $("#formRegistro").serialize(),  
-                    
+                    data: $("#formRegistro").serialize(),
+
                     //Procesa Dato recibido
                     success: function (data) {
                         document.getElementById("formRegistro").reset();
                         //Coloca el resultado en la pagina WEB
                         $("#result").html(data);
                     },
-                    
+
                     //Procesa mensaje de error
                     error: function (e) {
                         //Coloca un mensaje en la pagina WEB
@@ -45,9 +45,93 @@
 
             }
     </script>
+    <style>
+      h2{
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      body{
+        background: #F0F0F0;
+      }
+      form{
+        width: 650px;
+        margin: auto;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        padding: 15px;
+        border-radius: 5px;
+        background-color: #ffffff;
+        border: 10px solid #007bff;
+      }
+      .form-control{
+        border-radius: 5px;
+        border: 2px solid #007bff;
+      }
+      input{
+        border-radius: 5px;
+        border-color: #007bff;
+      }
+      .contenedorDias{
+        display: flex;
+      }
+      .dias{
+        width: 50%;
+      }
+      .dias .form-check{
+        width: inherit;
+        margin: auto;
+        text-align: left;
+      }
+      .horas{
+        text-align: center;
+      }
+      @media (max-width: 768px){
+        form{
+          width: 90% !important;
+          text-align: center;
+          padding: 5px;
+        }
+        .dias{
+          text-align: left;
+        }
+        .dias .form-check{
+          padding: 0;
+        }
+      }
+      @media (max-width: 500px){
+        form{
+          border: 5px solid #007bff;
+        }
+        .dias .form-check{
+          width: auto !important;
+        }
+      }
+    </style>
 </head>
 <body>
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">Principal</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Perfil<span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="productos.php">Servicios</a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        <a href="./login.html">Login</a>
+      </span>
+    </div>
+  </nav>
+
     <form  id="formRegistro" method="POST">
+      <h2>Registra un Servicio</h2>
         <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Nombre Servicio</label>
@@ -63,35 +147,50 @@
             <textarea class="form-control" id="descrip" name="descrip" rows="3" cols="10"></textarea>
         </div>
         <label for="exampleInputPassword1">Horario de trabajo</label><br>
-        <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-row contedorDias">
+        <div class="form-group dias col-md-6">
+          <div class="form-check">
             <input type="checkbox" id="Lunes" name="Lunes" value="Lunes">
             <label for="vehicle1">Lunes</label><br>
+          </div>
+          <div class="form-check">
             <input type="checkbox" id="Martes" name="Martes" value="Martes">
             <label for="vehicle2">Martes</label><br>
+          </div>
+          <div class="form-check">
             <input type="checkbox" id="Miercoles" name="Miercoles" value="Miercoles">
-         <label for="vehicle3">Miercoles</label><br>
+            <label for="vehicle3">Miercoles</label><br>
+          </div>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group dias col-md-6">
+          <div class="form-check">
             <input type="checkbox" id="Jueves" name="Jueves" value="Jueves">
             <label for="vehicle3">Jueves</label><br>
+          </div>
+          <div class="form-check">
             <input type="checkbox" id="Viernes" name="Viernes" value="Viernes">
             <label for="vehicle3">Viernes</label><br>
+          </div>
+          <div class="form-check">
             <input type="checkbox" id="Sabado" name="Sabado" value="Sabado">
             <label for="vehicle3">Sabado</label><br>
+          </div>
+          <div class="form-check">
             <input type="checkbox" id="Domingo" name="Domingo" value="Domingo">
             <label for="vehicle3">Domingo</label><br>
+          </div>
+
         </div>
         </div>
-        <div class="form-group">
+        <div class="form-group horas">
             <label for="exampleInputPassword1">De:</label>
-            <input type="time" name="de" id="">  
+            <input type="time" name="de" id="">
             <label for="exampleInputPassword1">Para:</label>
             <input type="time" name="para" id="">
         </div>
         <label for="inputPassword4">Capacidad por actividad</label>
-        <input class="form-control" type="number" name="capa" id="capa"  placeholder="Capacidad" >
-           
+        <input class="form-control mb-3" type="number" name="capa" id="capa"  placeholder="Capacidad" >
+
         <div class="form-group">
         <input class="btn btn-primary" type="submit" value="Registrar" onclick="llamarRegistro();return false;"></input>
         <input class="btn btn-primary" type="submit" value="Borrar" onclick="resetearFormu()"></input>
