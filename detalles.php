@@ -28,13 +28,13 @@ $servicio=$crud->obtenerElemento($_GET["id"]);
                     url: "./controlador/controlador_servicio.php",
                     //Datos a enviar
                     data: {mandar:"consultar"},  // Se forma la cadena getusuario.php?q=2
-                    
+
                     //Procesa Dato recibido
                     success: function (data) {
                         //Coloca el resultado en la pagina WEB
                         $(".list-group").html(data);
                     },
-                    
+
                     //Procesa mensaje de error
                     error: function (e) {
                         //Coloca un mensaje en la pagina WEB
@@ -44,12 +44,32 @@ $servicio=$crud->obtenerElemento($_GET["id"]);
         }
     </script>
     <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <style media="screen">
+    h5{
+      padding: 5px;
+      border-width: 0 0 2px 0;
+      border-style: solid;
+      border-color: #42B8FF;
+    }
+      h6{
+        color: red;
+      }
+      .img{
+        display: block;
+
+      }
+      .img img{
+        display: block;
+
+        margin-top: 15px;
+      }
+    </style>
 </head>
 <body>
 
 <div class="container-fluid">
 
-    <!-- Header -->  
+    <!-- Header -->
     <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="index.html">Principal</a>
@@ -71,7 +91,7 @@ $servicio=$crud->obtenerElemento($_GET["id"]);
     </div>
   </nav>
         <div class="row">
-          <!-- Jumbotron que contiene imagen e input/button, remover el estilo en linea de jumbotron -->  
+          <!-- Jumbotron que contiene imagen e input/button, remover el estilo en linea de jumbotron -->
             <div class="col-12 col-no-padding" ><div class="jumbotron jumbotron-fluid" style="background-image: url(./img/paisaje.jpg);">
                 <div class="container">
                   </div>
@@ -80,9 +100,9 @@ $servicio=$crud->obtenerElemento($_GET["id"]);
         </header>
 
 
-   <div class="container py-3"></div>
+   <div class="container py-1"></div>
 <!-- Contenedor de lista-->
-    <div class="container py-5">
+    <div class="container py-1">
 
     <div class="row">
         <!-- Columna grande ajustada derecha izquierda-->
@@ -93,35 +113,35 @@ $servicio=$crud->obtenerElemento($_GET["id"]);
                 <li class="list-group-item noBorder">
                     <div class="media">
                         <div class="media-body">
-                            <h5 class="mt-0 font-weight-bold mb-2"><?php echo $servicio->getNombreServicio() ?></h5>      
-                        </div>   
-                    </div>   
+                            <h5 class="mt-0 font-weight-bold mb-2"><?php echo $servicio->getNombreServicio() ?></h5>
+                        </div>
+                    </div>
                 </li>
                 <li class="list-group-item noBorder">
                     descripcion
                 <p class="font-italic text-muted mb-0 small"><?php echo $servicio->getDescripcion() ?></p>
-                </li> 
+                </li>
                 <li class="list-group-item noBorder">
                     costo
-                    <h6 class="font-weight-bold my-2"><?php echo $servicio->getCosto() ?></h6>
-                </li>   
-                <li class="list-group-item noBorder">
+                    <h6 class="font-weight-bold my-2">$ <?php echo $servicio->getCosto() ?></h6>
+                </li>
+                <li class="list-group-item noBorder img">
                     imagenes
                     <img  src="./img/paisaje.jpg" alt="">
-                </li> 
+                </li>
                 <li class="list-group-item noBorder">
                     Vendedor
                     <a href="perfil.php?usuario=<?php echo $servicio->getNombreDueno() ?>">
                     <h6 class="font-weight-bold my-2"><?php echo $servicio->getNombreDueno() ?></h6>
                     </a>
-                </li> 
+                </li>
                 <li class="list-group-item noBorder">
-                   
+
                     <a href="compra.php?evento=<?php echo $servicio->getId() ?>">
                     <input class="btn btn-primary" type="submit" value="Comprar" onclick="false;"></input>
                     </a>
-                </li> 
-                <!-- Elemento de lista--> 
+                </li>
+                <!-- Elemento de lista-->
               </ul>
         </div>
     </div>
