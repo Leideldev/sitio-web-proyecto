@@ -144,119 +144,45 @@ $listaServicios=$crud->obtenerLista();
     <div class="container py-2">
 
     <div class="row">
-             <h2>Elige un Servicio ahora mismo</h2>
-        <!-- Columna grande ajustada derecha izquierda-->
-        <div class="col-lg-8 mx-auto mid">
-            <!-- Lista de productos-->
-            <ul class="list-group">
-                <!-- Elemento de lista-->
-                <?php foreach ($listaServicios as $servicio) {?>
-                <li class="list-group-item noBorder">
-                    <div class="media">
-                        <div class="media-body">
-                    <a href='detalles.php?id=<?php echo $servicio->getId() ?>'><h5 class="mt-0 font-weight-bold mb-2"><?php echo $servicio->getNombreServicio() ?></h5></a>
-
-                            <p class="font-italic text-muted mb-0 small"><?php echo $servicio->getDescripcion() ?></p>
-                            <h6 class="font-weight-bold my-2">$ <?php echo $servicio->getCosto() ?></h6>
-                        </div>
-
-                        <img  title="Evento turistico en Ahome" alt="Turismo en Ahome" onclick="location.href ='http://localhost/sitio-web-proyecto/detalles.php?id=<?php echo $servicio->getId() ?>';" src="./img/paisaje.jpg" alt="">
-                    </div>
-                </li>
-                <?php }?>
-                <li class="list-group-item noBorder">
-                    <div class="media">
-                        <div class="media-body">
-                        </div>
-                        <button onclick="ActualizarLista();return false;">actualizar</button>
-                    </div>
-                </li>
-                <!-- Elemento de lista-->
-              </ul>
-        </div>
+      <?php
+       if(empty($listaServicios)){
+         echo '<h2>No hay servicios de momento</h2>';
+       }else{
+         ' <h2>Elige un servicio ahora mismo</h2>
+         <!-- Columna grande ajustada derecha izquierda-->
+         <div class="col-lg-8 mx-auto mid">
+             <!-- Lista de productos-->
+             <ul class="list-group">
+                 <!-- Elemento de lista-->
+                 <?php foreach ($listaServicios as $servicio) {?>
+                 <li class="list-group-item noBorder">
+                     <div class="media">
+                         <div class="media-body">
+                     <a href="detalles.php?id=<?php echo $servicio->getId() ?>"><h5 class="mt-0 font-weight-bold mb-2"><?php echo $servicio->getNombreServicio() ?></h5></a>
+ 
+                             <p class="font-italic text-muted mb-0 small"><?php echo $servicio->getDescripcion() ?></p>
+                             <h6 class="font-weight-bold my-2">$ <?php echo $servicio->getCosto() ?></h6>
+                         </div>
+ 
+                         <img  title="Evento turistico en Ahome" alt="Turismo en Ahome" onclick="location.href ="http://localhost/sitio-web-proyecto/detalles.php?id=<?php echo $servicio->getId() ?>";" src="./img/paisaje.jpg" alt="">
+                     </div>
+                 </li>
+                 <?php }?>
+                 <li class="list-group-item noBorder">
+                     <div class="media">
+                         <div class="media-body">
+                         </div>
+                         <button onclick="ActualizarLista();return false;">actualizar</button>
+                     </div>
+                 </li>
+                 <!-- Elemento de lista-->
+               </ul>
+         </div>';
+       }
+      ?>           
     </div>
     </div>
 
-    <!-- Elemento dejar un comentario -->
-    <div class="container">
-        <div class="row">
-            <!-- Columna grande ajustada derecha izquierda-->
-            <div class="col-lg-8 mx-auto">
-                <div class="card card-no-border">
-                    <div class="card-header card-header-style mb-5"><div class="media">
-                        <img src="./img/descarga.png" alt="" class="img-circle comment-img mr-3">
-                           <div class="media-body">
-                               <input class="form-control form-control-sm" type="text" placeholder="Add a comment..">
-                               <div class="row ">
-                                <div class="col-6 d-flex flex-row justify-content-start align-self-center">
-                                    <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                </div>
-                                <div class="col-6 d-flex flex-row justify-content-end align-self-center mt-1">
-                                    <button type="button" class="btn btn-secondary btn-sm">Comment</button></div></div>
-                           </div>
-                       </div> </div>
-                    <div class="card-body">
-                        <div class="media">
-                         <img src="./img/descarga.png" alt="" class="img-circle comment-img mr-3">
-                            <div class="media-body">
-                                <div class="row "><div class="col-6">
-                                    <h5 class="card-title small font-weight-bold">Username 4h ago </h5>
-                                </div>
-                                <div class="col-6 d-flex flex-row justify-content-end align-self-center">
-                                    <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                </div></div>
-
-                                <p class="mb-0 small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit fuga autem maiores necessitatibus.</p>
-                                <hr>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <img src="./img/descarga.png" alt="" class="img-circle comment-img mr-3">
-                               <div class="media-body">
-                                <div class="row "><div class="col-6">
-                                    <h5 class="card-title small font-weight-bold">Username 4h ago </h5>
-                                </div>
-                                <div class="col-6 d-flex flex-row justify-content-end align-self-center">
-                                    <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                </div></div>
-                                   <p class="mb-0 small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit fuga autem maiores necessitatibus.</p>
-                                   <hr>
-                               </div>
-                           </div>
-                           <div class="media">
-                            <img src="./img/descarga.png" alt="" class="img-circle comment-img mr-3">
-                               <div class="media-body">
-                                <div class="row "><div class="col-6">
-                                    <h5 class="card-title small font-weight-bold">Username 4h ago </h5>
-                                </div>
-                                <div class="col-6 d-flex flex-row justify-content-end align-self-center">
-                                    <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                </div></div>
-                                   <p class="mb-0 small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit fuga autem maiores necessitatibus.</p>
-                                   <hr>
-                               </div>
-                           </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 <!-- Footer -->
     <footer class="page-footer font-small blue">
         <div class="footer-copyright text-center py-3">2020 Copyright

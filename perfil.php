@@ -95,7 +95,11 @@ else if(isset($_SESSION['nombre_usuario'])){
                             Tu descripción aquí.
                           </p>
                           <p>
-                            <input onchange=cambio_archivo() type=file id=input>
+                           <form action="upload.php" method="post" enctype="multipart/form-data">
+  Select image to upload:
+  <input onchange=cambio_archivo() type=file name="fileToUpload" id="fileToUpload">
+  <input type="submit" value="Upload Image" name="submit">
+</form>
                           </p>
                         </div>
                       </div>

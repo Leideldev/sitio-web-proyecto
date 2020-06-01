@@ -1,5 +1,5 @@
 function cambio_archivo() {
-    var archivo = document.getElementById('input').files[0];
+    var archivo = document.getElementById('fileToUpload').files[0];
     var img = document.getElementById('img');
 
     var lectorArchivo = new FileReader();
