@@ -11,7 +11,7 @@ else if(isset($_SESSION['nombre_usuario'])){
   $usuario= $crud->obtenerElemento($_SESSION['nombre_usuario']);
 }else{
   header("Status: 301 Moved Permanently");
-  header("Location: http://localhost/sitio-web-proyecto/login.html");
+  header("Location: http://localhost/index.php");
   exit;
 }
 ?>
@@ -32,29 +32,37 @@ else if(isset($_SESSION['nombre_usuario'])){
     <!-- Header -->  
       <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index.html">Principal</a>
+    <a class="navbar-brand" href="index.php">Principal</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Perfil<span class="sr-only"></span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="productos.php">Servicios</a>
-        </li>
+      <?php
+     if(($_SESSION['tipo'])=='publicista')
+     {
+       echo '
+       <li class="nav-item">
+         <a class="nav-link" href="productos.php">Servicios</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="insertarServicio.php">Registrar servicio</a>
+       </li>
+     ';
+     }else{
+      echo '
+      <li class="nav-item active">
+        <a class="nav-link" href="perfil.php">Perfil<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="productos.php">Servicios</a>
+      </li>
+    ';
+     }
+        ?>
       </ul>
       <span class="navbar-text" id=login>
-        <?php
-        if(isset($_SESSION['nombre_usuario']))
-        {
-            echo '<button type="button" class="btn btn-primary" onclick="cerrarSesion();">Cerrar sesión</button>';
-        }else{
-          echo '<a href="./login.html">Login</a>';
-        }
-        ?>
-        
+<button type="button" class="btn btn-primary" onclick="cerrarSesion();">Cerrar sesión</button>;
       </span>
     </div>
   </nav>
@@ -84,7 +92,7 @@ else if(isset($_SESSION['nombre_usuario'])){
                         <div class="profile__header">
                           <h4><?php echo $usuario->getNombre(); ?><small> <?php echo $usuario->getTipo(); ?></small></h4>
                           <p class="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non nostrum odio cum repellat veniam eligendi rem cumque magnam autem delectus qui.
+                            Tu descripción aquí.
                           </p>
                           <p>
                             <input onchange=cambio_archivo() type=file id=input>
@@ -96,21 +104,13 @@ else if(isset($_SESSION['nombre_usuario'])){
                     <!-- User info -->
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                      <h4 class="panel-title">User info</h4>
+                      <h4 class="panel-title">Información del usuario</h4>
                       </div>
                       <div class="panel-body">
                         <table class="table profile__table">
                           <tbody>
                             <tr>
-                              <th><strong>Location</strong></th>
-                              <td></td>
-                            </tr>
-                            <tr>
-                              <th><strong>Company name</strong></th>
-                              <td></td>
-                            </tr>
-                            <tr>
-                              <th><strong>Position</strong></th>
+                              <th><strong>Ubicación</strong></th>
                               <td></td>
                             </tr>
                           </tbody>
@@ -127,7 +127,7 @@ else if(isset($_SESSION['nombre_usuario'])){
                         <table class="table profile__table">
                           <tbody>   
                             <tr>
-                              <th><strong>Member since</strong></th>
+                              <th><strong>Miembro desde</strong></th>
                               <td>Jan 01, 2016</td>
                             </tr>        
                           </tbody>
@@ -144,7 +144,7 @@ else if(isset($_SESSION['nombre_usuario'])){
                     <!-- Contact user -->
                     <p>
                       <a href="#" class="profile__contact-btn btn btn-lg btn-block btn-info" data-toggle="modal" data-target="#profile__contact-form">
-                        Contact user
+                        Contactar usuario
                       </a>
                     </p>
             
@@ -157,8 +157,8 @@ else if(isset($_SESSION['nombre_usuario'])){
                           <i class="fa fa-phone"></i>
                         </div>
                         <div class="profile__contact-info-body">
-                          <h5 class="profile__contact-info-heading">Work number</h5>
-                          (000)987-65-43
+                          <h5 class="profile__contact-info-heading">Número fijo</h5>
+                          123456789
                         </div>
                       </div>
                       <div class="profile__contact-info-item">
@@ -166,8 +166,8 @@ else if(isset($_SESSION['nombre_usuario'])){
                           <i class="fa fa-phone"></i>
                         </div>
                         <div class="profile__contact-info-body">
-                          <h5 class="profile__contact-info-heading">Mobile number</h5>
-                          (000)987-65-43
+                          <h5 class="profile__contact-info-heading">Número celular</h5>
+                          987654321
                         </div>
                       </div>
                       <div class="profile__contact-info-item">
@@ -175,17 +175,13 @@ else if(isset($_SESSION['nombre_usuario'])){
                           <i class="fa fa-envelope-square"></i>
                         </div>
                         <div class="profile__contact-info-body">
-                          <h5 class="profile__contact-info-heading">E-mail address</h5>
-                          <a href="mailto:admin@domain.com">admin@domain.com</a>
+                          <h5 class="profile__contact-info-heading">Correo electronico</h5>
+                          <a href="mailto:admin@domain.com">admin@ahometurismo.com</a>
                         </div>
                       </div>
                       <div class="profile__contact-info-item">
                         <div class="profile__contact-info-icon">
                           <i class="fa fa-map-marker"></i>
-                        </div>
-                        <div class="profile__contact-info-body">
-                          <h5 class="profile__contact-info-heading">Work address</h5>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                         </div>
                       </div>
                     </div>

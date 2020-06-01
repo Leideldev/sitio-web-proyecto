@@ -48,8 +48,8 @@ if(isset($_POST['mandar']))
 }
 
 if(isset($_POST['cerrar'])){
-    session_start();
-    session_unset();
+        session_start();
+        session_unset();
     die();
 }
 

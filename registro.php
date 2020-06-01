@@ -1,3 +1,11 @@
+<?php session_start();
+if(isset($_SESSION['nombre_usuario']))
+{
+  header('location: http://localhost/perfil.php', true, 307);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

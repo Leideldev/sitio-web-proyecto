@@ -20,7 +20,7 @@
 
   <!-- Custom styles for this template -->
   <link href="./css/landing-page.min.css" rel="stylesheet">
-  <script src="./js/bootstrap.js"></script>
+  
   <script src="./js/jquery-3.4.1.js"></script>
  
 </head>
@@ -29,26 +29,48 @@
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index.html">Principal</a>
+    <a class="navbar-brand" href="index.php">Principal</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="perfil.php">Perfil<span class="sr-only"></span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="productos.php">Servicios</a>
-        </li>
-      </ul>
+    <ul class="navbar-nav mr-auto">
+    <?php session_start();
+     if(isset($_SESSION['nombre_usuario']))
+     {
+      if(($_SESSION['tipo'])=='publicista')
+     {
+       echo '
+       <li class="nav-item">
+        <a class="nav-link" href="perfil.php">Perfil<span class="sr-only"></span></a>
+      </li>
+       <li class="nav-item">
+         <a class="nav-link" href="productos.php">Servicios</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="insertarServicio.php">Registrar servicio</a>
+       </li>
+     ';
+     }else{
+      echo '
+      <li class="nav-item active">
+        <a class="nav-link" href="perfil.php">Perfil<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="productos.php">Servicios</a>
+      </li>
+    ';
+     }
+     }
+        ?>
+        </ul>
       <span class="navbar-text" id=login>
-        <?php session_start();
+        <?php
         if(isset($_SESSION['nombre_usuario']))
         {
             echo '<button type="button" class="btn btn-primary" onclick="cerrarSesion();">Cerrar sesión</button>';
         }else{
-          echo '<a href="./login.html">Login</a>';
+          echo '<a href="./login.php">Login</a>';
         }
         ?>
         
@@ -162,6 +184,7 @@
   <!-- Bootstrap core JavaScript -->
   <!--<script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+  <script src="./js/bootstrap.js"></script>
   <script src="./js/custom.js"></script>
 </body>
 

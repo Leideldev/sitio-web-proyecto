@@ -1,5 +1,11 @@
 
 <?php
+
+session_start();
+if(!isset($_SESSION['nombre_usuario']))
+{
+  header('location: http://localhost/index.php', true, 307);
+}
 //incluye la clase Libro y CrudLibro
 require_once('./clases/crud_servicio.php');
 require_once('servicio.php');
@@ -72,21 +78,40 @@ $servicio=$crud->obtenerElemento($_GET["id"]);
     <!-- Header -->
     <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index.html">Principal</a>
+    <a class="navbar-brand" href="index.php">Principal</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="http://localhost/perfil.php">Perfil<span class="sr-only"></span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="productos.php">Servicios</a>
-        </li>
+      <?php
+     if(($_SESSION['tipo'])=='publicista')
+     {
+       echo '
+       <li class="nav-item">
+        <a class="nav-link" href="perfil.php">Perfil<span class="sr-only"></span></a>
+      </li>
+       <li class="nav-item">
+         <a class="nav-link" href="productos.php">Servicios</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="insertarServicio.php">Registrar servicio</a>
+       </li>
+     ';
+     }else{
+      echo '
+      <li class="nav-item active">
+        <a class="nav-link" href="perfil.php">Perfil<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="productos.php">Servicios</a>
+      </li>
+    ';
+     }
+        ?>
       </ul>
       <span class="navbar-text">
-        <a href="./login.html">Login</a>
+      <button type="button" class="btn btn-primary" onclick="cerrarSesion();">Cerrar sesión</button>;
       </span>
     </div>
   </nav>
@@ -149,5 +174,6 @@ $servicio=$crud->obtenerElemento($_GET["id"]);
 
 
     </div>
+    <script src="./js/custom.js"></script>
 </body>
 </html>

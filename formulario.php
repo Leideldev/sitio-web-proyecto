@@ -1,3 +1,10 @@
+<?php
+if(isset($_SESSION['nombre_usuario']))
+{
+  header('location: http://localhost/perfil.php', true, 307);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,21 +50,15 @@
 
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index.html">Principal</a>
+    <a class="navbar-brand" href="index.php">Principal</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Perfil<span class="sr-only"></span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="productos.php">Servicios</a>
-        </li>
       </ul>
       <span class="navbar-text">
-        <a href="./login.html">Login</a>
+        <a href="./login.php">Login</a>
       </span>
     </div>
   </nav>
