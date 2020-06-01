@@ -62,7 +62,7 @@ else if(isset($_SESSION['nombre_usuario'])){
         ?>
       </ul>
       <span class="navbar-text" id=login>
-<button type="button" class="btn btn-primary" onclick="cerrarSesion();">Cerrar sesión</button>;
+<button type="button" class="btn btn-primary" onclick="cerrarSesion();">Cerrar sesión</button>
       </span>
     </div>
   </nav>

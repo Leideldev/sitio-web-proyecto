@@ -144,43 +144,45 @@ $listaServicios=$crud->obtenerLista();
     <div class="container py-2">
 
     <div class="row">
-      <?php
+    <?php
        if(empty($listaServicios)){
          echo '<h2>No hay servicios de momento</h2>';
        }else{
-         ' <h2>Elige un servicio ahora mismo</h2>
-         <!-- Columna grande ajustada derecha izquierda-->
-         <div class="col-lg-8 mx-auto mid">
-             <!-- Lista de productos-->
-             <ul class="list-group">
-                 <!-- Elemento de lista-->
-                 <?php foreach ($listaServicios as $servicio) {?>
-                 <li class="list-group-item noBorder">
-                     <div class="media">
-                         <div class="media-body">
-                     <a href="detalles.php?id=<?php echo $servicio->getId() ?>"><h5 class="mt-0 font-weight-bold mb-2"><?php echo $servicio->getNombreServicio() ?></h5></a>
- 
-                             <p class="font-italic text-muted mb-0 small"><?php echo $servicio->getDescripcion() ?></p>
-                             <h6 class="font-weight-bold my-2">$ <?php echo $servicio->getCosto() ?></h6>
-                         </div>
- 
-                         <img  title="Evento turistico en Ahome" alt="Turismo en Ahome" onclick="location.href ="http://localhost/sitio-web-proyecto/detalles.php?id=<?php echo $servicio->getId() ?>";" src="./img/paisaje.jpg" alt="">
-                     </div>
-                 </li>
-                 <?php }?>
-                 <li class="list-group-item noBorder">
-                     <div class="media">
-                         <div class="media-body">
-                         </div>
-                         <button onclick="ActualizarLista();return false;">actualizar</button>
-                     </div>
-                 </li>
-                 <!-- Elemento de lista-->
-               </ul>
-         </div>';
+      ?>
+    <h2>Elige un Servicio ahora mismo</h2>
+        <!-- Columna grande ajustada derecha izquierda-->
+        <div class="col-lg-8 mx-auto mid">
+            <!-- Lista de productos-->
+            <ul class="list-group">
+                <!-- Elemento de lista-->
+                <?php foreach ($listaServicios as $servicio) {?>
+                <li class="list-group-item noBorder">
+                    <div class="media">
+                        <div class="media-body">
+                    <a href='detalles.php?id=<?php echo $servicio->getId() ?>'><h5 class="mt-0 font-weight-bold mb-2"><?php echo $servicio->getNombreServicio() ?></h5></a>
+
+                            <p class="font-italic text-muted mb-0 small"><?php echo $servicio->getDescripcion() ?></p>
+                            <h6 class="font-weight-bold my-2">$ <?php echo $servicio->getCosto() ?></h6>
+                        </div>
+
+                        <img  title="Evento turistico en Ahome" alt="Turismo en Ahome" onclick="location.href ='http://localhost/sitio-web-proyecto/detalles.php?id=<?php echo $servicio->getId() ?>';" src="./img/paisaje.jpg" alt="">
+                    </div>
+                </li>
+                <?php }?>
+                <li class="list-group-item noBorder">
+                    <div class="media">
+                        <div class="media-body">
+                        </div>
+                        <button onclick="ActualizarLista();return false;">actualizar</button>
+                    </div>
+                </li>
+                <!-- Elemento de lista-->
+              </ul>
+        </div> 
+        <?php  
        }
-      ?>           
-    </div>
+      ?>         
+      </div>
     </div>
 
 <!-- Footer -->

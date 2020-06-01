@@ -29,6 +29,26 @@ $horario=$crud_horario->obtenerElemento($_GET["evento"]);
     <script src="./js/jquery-3.4.1.js"></script>
     <script src="./js/bootstrap.js"></script>
     <script>
+       /*window.onload = function () {
+        //document.formularioCompra.nombre.focus();
+        document.formularioCompra.addEventListener('submit', validarFormulario);
+      }
+
+function validarFormulario(evObject) {
+  evObject.preventDefault();
+  var todoCorrecto = false;
+  var formulario = document.formularioCompra;
+  for (var i=0; i<formulario.length; i++) {
+    if(formulario[i].type =='number' || formulario[i].type =='date' || formulario[i].type =='time') {
+      if (formulario[i].value == null || formulario[i].value.length == 0 || /^\s*$/.test(formulario[i].value)){
+        alert (formulario[i].name+ ' no puede estar vacío o contener sólo espacios en blanco');
+        todoCorrecto=true;
+      }
+    }
+  }
+  return false;
+  //if (todoCorrecto ==true) {formulario.submit();} 
+}*/
         function RealizarCompra()
         {
             $.ajax({
@@ -145,12 +165,12 @@ $horario=$crud_horario->obtenerElemento($_GET["evento"]);
         ?>
       </ul>
       <span class="navbar-text">
-      <button type="button" class="btn btn-primary" onclick="cerrarSesion();">Cerrar sesión</button>;
+      <button type="button" class="btn btn-primary" onclick="cerrarSesion();">Cerrar sesión</button>
       </span>
     </div>
   </nav>
 
-    <form id="formularioCompra" action="./verificar_Compra.php" method="POST">
+    <form name="formularioCompra" id="formularioCompra" action="./verificar_Compra.php" method="POST">
         <h2>Nombre producto</h2>
         <p name="servicio"><?php echo $servicio->getNombreServicio() ?></p>
         <input type="hidden" id="servicio" name="servicio" value="<?php echo $servicio->getNombreServicio() ?>">
@@ -158,13 +178,13 @@ $horario=$crud_horario->obtenerElemento($_GET["evento"]);
         <p name="costo">$ <?php echo $servicio->getCosto() ?></p>
         <input type="hidden" id="costo" name="costo" value="<?php echo $servicio->getCosto() ?>">
         <h2>capacidad por evento: <?php echo $horario->getcapacidad() ?></h2>
-        <input type="number"  name="cupos" id="cupos" max="<?php echo $horario->getcapacidad() ?>">
+        <input required type="number"  name="cupos" id="cupos" max="<?php echo $horario->getcapacidad() ?>">
         <h2 class="horarios">Horarios:<span> <?php echo $horario->getDias() ?></span></h2>
         <h2>Desde: <?php echo $horario->getDe() ?></h2>
         <h2>Hasta: <?php echo $horario->getpara() ?></h2>
 
-        <input type="date"  name="dia" id="dia" min="2020-01-01" max="2020-12-31" >
-        <input type="time"  name="hora" id="hora" min="<?php echo $horario->getDe() ?>" max="<?php echo $horario->getpara() ?>">
+        <input type="date"  name="dia" required id="dia" min="2020-01-01" max="2020-12-31" >
+        <input type="time"  name="hora" required id="hora" min="<?php echo $horario->getDe() ?>" max="<?php echo $horario->getpara() ?>">
 
         <input class="btn btn-primary" class="btn" type="submit" value="Verificar" onclick="RealizarCompra();return false;"></input>
         <input type="hidden" id="mandar" name="mandar" value="compra">

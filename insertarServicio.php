@@ -148,7 +148,7 @@ if(!isset($_SESSION['nombre_usuario']) || $_SESSION['tipo'] != 'publicista')
        </li>
       </ul>
       <span class="navbar-text">
-      <button type="button" class="btn btn-primary" onclick="cerrarSesion();">Cerrar sesión</button>;
+      <button type="button" class="btn btn-primary" onclick="cerrarSesion();">Cerrar sesión</button>
       </span>
     </div>
   </nav>
