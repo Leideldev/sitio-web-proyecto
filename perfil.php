@@ -23,7 +23,6 @@ else if(isset($_SESSION['nombre_usuario'])){
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="./css/custom.css">
-    <script src="./js/custom.js"></script>
     <script src="./js/jquery-3.4.1.js"></script>
     <script src="./js/bootstrap.js"></script>
 </head>
@@ -46,8 +45,16 @@ else if(isset($_SESSION['nombre_usuario'])){
           <a class="nav-link" href="productos.php">Servicios</a>
         </li>
       </ul>
-      <span class="navbar-text">
-        <a href="./login.html">Login</a>
+      <span class="navbar-text" id=login>
+        <?php
+        if(isset($_SESSION['nombre_usuario']))
+        {
+            echo '<button type="button" class="btn btn-primary" onclick="cerrarSesion();">Cerrar sesión</button>';
+        }else{
+          echo '<a href="./login.html">Login</a>';
+        }
+        ?>
+        
       </span>
     </div>
   </nav>
@@ -198,6 +205,6 @@ else if(isset($_SESSION['nombre_usuario'])){
   </div>
 </footer>  
   </div>
-  
+  <script src="./js/custom.js"></script>
 </body>
 </html>

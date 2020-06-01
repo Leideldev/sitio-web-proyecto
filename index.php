@@ -21,7 +21,8 @@
   <!-- Custom styles for this template -->
   <link href="./css/landing-page.min.css" rel="stylesheet">
   <script src="./js/bootstrap.js"></script>
-
+  <script src="./js/jquery-3.4.1.js"></script>
+ 
 </head>
 
 <body>
@@ -41,8 +42,16 @@
           <a class="nav-link" href="productos.php">Servicios</a>
         </li>
       </ul>
-      <span class="navbar-text">
-        <a href="./login.html">Login</a>
+      <span class="navbar-text" id=login>
+        <?php session_start();
+        if(isset($_SESSION['nombre_usuario']))
+        {
+            echo '<button type="button" class="btn btn-primary" onclick="cerrarSesion();">Cerrar sesión</button>';
+        }else{
+          echo '<a href="./login.html">Login</a>';
+        }
+        ?>
+        
       </span>
     </div>
   </nav>
@@ -153,7 +162,7 @@
   <!-- Bootstrap core JavaScript -->
   <!--<script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
-
+  <script src="./js/custom.js"></script>
 </body>
 
 </html>
