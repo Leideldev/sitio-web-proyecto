@@ -158,16 +158,16 @@ if(!isset($_SESSION['nombre_usuario']) || $_SESSION['tipo'] != 'publicista')
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="inputEmail4">Nombre Servicio</label>
-        <input class="form-control" type="text" name="nameSercive" id="nameSercive" placeholder="Servicio">
+        <input class="form-control" required type="text" name="nameSercive" id="nameSercive" placeholder="Servicio">
       </div>
       <div class="form-group col-md-6">
         <label for="inputPassword4">Costo</label>
-        <input class="form-control" type="number" name="costos" id="costos" placeholder="Precio">
+        <input class="form-control" required type="number" name="costos" id="costos" placeholder="Precio">
       </div>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Descipcion del servicio</label>
-      <textarea class="form-control" id="descrip" name="descrip" rows="3" cols="10"></textarea>
+      <textarea class="form-control" required id="descrip" name="descrip" rows="3" cols="10"></textarea>
     </div>
     <label for="exampleInputPassword1">Horario de trabajo</label><br>
     <div class="form-row contedorDias">
@@ -207,15 +207,15 @@ if(!isset($_SESSION['nombre_usuario']) || $_SESSION['tipo'] != 'publicista')
     </div>
     <div class="form-group horas">
       <label for="exampleInputPassword1">De:</label>
-      <input type="time" name="de" id="">
+      <input type="time" required name="de" id="">
       <label for="exampleInputPassword1">Para:</label>
-      <input type="time" name="para" id="">
+      <input type="time" required name="para" id="">
     </div>
     <label for="inputPassword4">Capacidad por actividad</label>
-    <input class="form-control mb-3" type="number" name="capa" id="capa" placeholder="Capacidad">
+    <input class="form-control mb-3"  type="number" name="capa" id="capa" placeholder="Capacidad">
 
     <div class="form-group">
-      <input class="btn btn-primary" type="submit" value="Registrar" onclick="llamarRegistro();return false;"></input>
+      <input class="btn btn-primary"  type="submit" value="Registrar" onclick="llamarRegistro();return false;"></input>
       <input class="btn btn-primary" type="submit" value="Borrar" onclick="resetearFormu()"></input>
     </div>
     <!--<input type="button" value="registrar" onclick="llamarRegistro();return false;">-->

@@ -19,6 +19,7 @@ if(isset($_POST['mandar']))
         {
             if($_SESSION["tipo"]=="publicista")
             {
+                validarCampos();
                 $servicio = new Servicio($_POST['nameSercive'],$_POST['descrip'],$_POST['costos'],$_SESSION['nombre_usuario']);
                 $crud->insertar($servicio);
                 //busco todos los servicicos
@@ -85,7 +86,68 @@ else
 {
     echo"123";
 }
-
+function validarCampos(){
+    validarSeleccionDias();
+    if($_POST['nameSercive']==""){
+        echo "<span style='font-weight:bold;color:red;'>Falta nombre de servicio<span>";
+        exit;
+    }
+    if($_POST['costos']==""){
+        echo "<span style='font-weight:bold;color:red;'>Agrege un costo a sus servicio<span>";
+        exit;
+    }
+    if($_SESSION['nombre_usuario']==""){
+        echo "<span style='font-weight:bold;color:red;'>No hay nombre de usuario<span>";
+        exit;
+    }
+    if($_POST['de']==""){
+        echo "<span style='font-weight:bold;color:red;'>no dio un horario de inicio<span>";
+        exit;
+    }
+    if($_POST['para']==""){
+        echo "<span style='font-weight:bold;color:red;'>No dio un horario de acabado<span>";
+        exit;
+    }
+    if($_POST['capa']==""){
+        echo "<span style='font-weight:bold;color:red;'>da de alta una capacidad de su servicio<span>";
+        exit;
+    }
+}
+function validarSeleccionDias(){
+    $dias = false;
+    if(isset($_POST['Lunes']))
+    {
+        $dias = true;
+    }
+    if(isset($_POST['Martes']))
+    {
+        $dias = true;
+    }
+    if(isset($_POST['Miercoles']))
+    {
+        $dias = true;
+    }
+    if(isset($_POST['Jueves']))
+    {
+        $dias = true;
+    }
+    if(isset($_POST['Viernes']))
+    {
+        $dias = true;
+    }
+    if(isset($_POST['Sabado']))
+    {
+        $dias = true;
+    }
+    if(isset($_POST['Domingo']))
+    {
+        $dias = true;
+    }
+    if($dias==false){
+        echo "<span style='font-weight:bold;color:red;'>Escoge un horario de trabajo porfavor<span>";
+        exit;
+    }
+}
 function concatenacionDeDias(){
     $dias = '';
     if(isset($_POST['Lunes']))
