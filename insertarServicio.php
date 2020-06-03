@@ -214,6 +214,10 @@ if(!isset($_SESSION['nombre_usuario']) || $_SESSION['tipo'] != 'publicista')
     <label for="inputPassword4">Capacidad por actividad</label>
     <input class="form-control mb-3"  type="number" name="capa" id="capa" placeholder="Capacidad">
 
+    Select Image Files to Upload:
+    <input onchange=cambio_fotos() type="file" name="files[]" id="files[]" multiple >
+    <div id="fotos"></div>
+
     <div class="form-group">
       <input class="btn btn-primary"  type="submit" value="Registrar" onclick="llamarRegistro();return false;"></input>
       <input class="btn btn-primary" type="submit" value="Borrar" onclick="resetearFormu()"></input>
