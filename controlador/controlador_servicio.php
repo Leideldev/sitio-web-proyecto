@@ -33,6 +33,7 @@ if(isset($_POST['mandar']))
                 $horario = new Horario($ultimoId,$_POST['de'],$_POST['para'],$dias,$_POST['capa']);
                 $crud_horario->insertar($horario);
                 pasarFotos($ultimoId);
+                moverFotoServidor($ultimoId);
                 //$id_servicio,$de,$para,$dias
                
                 /*$de = $_POST['de'];
@@ -96,11 +97,9 @@ function pasarFotos( $ultimoId){
         echo "<span style='font-weight:bold;color:red;'>NO  se creo la carpeta<span>";
     }
     echo "<span style='font-weight:bold;color:red;'>asfafafafsfas<span>";
-    echo $_FILES['fotukis'][0];
-    $fotos_de_morras  = $_FILES['fotukis'];   
+    $fotos_de_morras  = $_FILES['fotukis']['name'];   
     foreach( $fotos_de_morras as $value ) {
-        echo "ayudaaa :v";
-        echo $value;
+        
     }
 }
 function validarCampos(){
@@ -196,6 +195,61 @@ function concatenacionDeDias(){
         $dias.= $_POST['Domingo']."-";
     }
     return $dias;
+}
+
+function moverFotoServidor($ultimoId){
+    $target_dir = "./fotosServicio/".$ultimoId."/";
+    if (!file_exists($target_dir)) {
+        mkdir($target_dir, 0777, true);
+        echo "<span style='font-weight:bold;color:green;'>se creo la carpeta<span>";
+    }else{
+        echo "<span style='font-weight:bold;color:red;'>NO  se creo la carpeta<span>";
+    }
+   $fotos_de_morras  = $_FILES['fotukis']['name'];   
+    for($i=0;$i<count($fotos_de_morras);$i++) {
+    
+$target_file = $target_dir . basename($fotos_de_morras[$i]);
+
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+// Check if image file is a actual image or fake image
+if(isset($_POST["mandar"])) {
+  $check = getimagesize($_FILES["fotukis"]["tmp_name"][$i]);
+  if($check !== false) {
+    $uploadOk = 1;
+  } else {
+    $uploadOk = 0;
+  }
+}
+
+// Check if file already exists
+if (file_exists($target_file)) {
+  $uploadOk = 0;
+}
+
+// Check file size
+if ($_FILES["fotukis"]["size"][$i] > 50000000) {
+  $uploadOk = 0;
+}
+
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+  $uploadOk = 0;
+}
+
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+// if everything is ok, try to upload file
+} else {
+  if (move_uploaded_file($_FILES["fotukis"]["tmp_name"][$i], $target_file)) {
+      echo "se hizo bien";
+  } else {
+      "algo salio mal";
+  }
+}
+    }
 }
 
 

@@ -27,7 +27,7 @@ if(!isset($_SESSION['nombre_usuario']) || $_SESSION['tipo'] != 'publicista')
       var descripServicio = $("#descrip").val();
       var costoServ = $("#costos").val();
       var vendedor1 = "vendedor";
-      var datos = new FormData($("#formRegistro")); 
+      var form_data = new FormData($("#formRegistro")[0]);
       // AJAX
       $.ajax({
         //Tipo de envio
@@ -36,8 +36,7 @@ if(!isset($_SESSION['nombre_usuario']) || $_SESSION['tipo'] != 'publicista')
         url: "./controlador/controlador_servicio.php",
         //Datos a enviar
         //data: {mandar:"registro",nameSercive:nombreServicio,descrip:descripServicio,costos:costoServ,vendedor:vendedor1},  // Se forma la cadena getusuario.php?nombre=2&&contra=dato2
-        data: datos,
-        cache: false,
+        data: form_data,
         contentType: false,
         processData: false,
         //Procesa Dato recibido
@@ -218,7 +217,7 @@ if(!isset($_SESSION['nombre_usuario']) || $_SESSION['tipo'] != 'publicista')
     <input class="form-control mb-3"  type="number" name="capa" id="capa" placeholder="Capacidad">
 
     Select Image Files to Upload:
-    <input onchange=cambio_fotos() type="file" name="fotukis" id="fotukis" multiple >
+    <input onchange=cambio_fotos() type="file" name="fotukis[]" id="fotukis" multiple >
     <div id="fotos"></div>
 
     <div class="form-group">
