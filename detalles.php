@@ -69,6 +69,22 @@ $servicio=$crud->obtenerElemento($_GET["id"]);
 
         margin-top: 15px;
       }
+      img{
+        max-width: 500px !important;
+        height: auto;
+      }
+      @media (max-width: 1100px){
+        img{
+          max-width: 90% !important;
+          width: 90% !important;
+        }
+      }
+      @media (max-width: 500px){
+        img{
+          max-width: 100% !important;
+          width: 100% !important;
+        }
+      }
     </style>
 </head>
 <body>
@@ -152,13 +168,13 @@ $servicio=$crud->obtenerElemento($_GET["id"]);
                 </li>
                 <li class="list-group-item noBorder img">
                     imagenes
-                    <?php 
+                    <?php
                       $directory="./controlador/fotosServicio/".$_GET["id"];
                       $dirint = dir($directory);
                       while (($archivo = $dirint->read()) !== false)
                       {
                         $extension = strtolower(pathinfo($archivo ,PATHINFO_EXTENSION));
-                        if($extension=='jpg' || $extension =='png' || $extension == 'gif' || $extension == 'bmp') {                      
+                        if($extension=='jpg' || $extension =='png' || $extension == 'gif' || $extension == 'bmp') {
                               echo '<img src="'.$directory."/".$archivo.'">'."\n";
                           }
                       }
