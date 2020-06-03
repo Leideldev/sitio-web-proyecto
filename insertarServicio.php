@@ -104,6 +104,17 @@ if(!isset($_SESSION['nombre_usuario']) || $_SESSION['tipo'] != 'publicista')
       text-align: center;
     }
 
+    #subir{
+      width: 250px;
+      padding: 15px;
+      background: #007bff;
+      color: white;
+      font-weight: bold;
+      border: none;
+      margin: auto;
+      margin-top: 15px;
+    }
+
     @media (max-width: 768px) {
       form {
         width: 90% !important;
@@ -119,6 +130,19 @@ if(!isset($_SESSION['nombre_usuario']) || $_SESSION['tipo'] != 'publicista')
         padding: 0;
       }
     }
+    #fotos{
+      display: flex;
+      flex-wrap: wrap;
+      margin: 20px 0;
+      justify-content: center;
+    }
+    #fotos img{
+      max-width: 150px !important;
+      width: 150px;
+      height: 150px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
 
     @media (max-width: 500px) {
       form {
@@ -128,6 +152,10 @@ if(!isset($_SESSION['nombre_usuario']) || $_SESSION['tipo'] != 'publicista')
       .dias .form-check {
         width: auto !important;
       }
+      #fotos img{
+        margin-right: 0 !important;
+      }
+
     }
   </style>
 </head>
@@ -217,7 +245,8 @@ if(!isset($_SESSION['nombre_usuario']) || $_SESSION['tipo'] != 'publicista')
     <input class="form-control mb-3"  type="number" name="capa" id="capa" placeholder="Capacidad">
 
     Select Image Files to Upload:
-    <input onchange=cambio_fotos() type="file" name="fotukis[]" id="fotukis" multiple >
+    <input onchange=cambio_fotos() type="file" name="fotukis[]" id="fotukis" multiple style="display: none;">
+    <button type="button" name="subir" id="subir" value="browse" onclick="document.getElementById('fotukis').click();" style="display: block;">Subir</button>
     <div id="fotos"></div>
 
     <div class="form-group">
