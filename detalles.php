@@ -152,7 +152,18 @@ $servicio=$crud->obtenerElemento($_GET["id"]);
                 </li>
                 <li class="list-group-item noBorder img">
                     imagenes
-                    <img  src="./img/paisaje.jpg" alt="">
+                    <?php 
+                      $directory="./controlador/fotosServicio/".$_GET["id"];
+                      $dirint = dir($directory);
+                      while (($archivo = $dirint->read()) !== false)
+                      {
+                        $extension = strtolower(pathinfo($archivo ,PATHINFO_EXTENSION));
+                        if($extension=='jpg' || $extension =='png' || $extension == 'gif' || $extension == 'bmp') {                      
+                              echo '<img src="'.$directory."/".$archivo.'">'."\n";
+                          }
+                      }
+                      $dirint->close();
+                    ?>
                 </li>
                 <li class="list-group-item noBorder">
                     Vendedor

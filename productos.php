@@ -164,8 +164,21 @@ $listaServicios=$crud->obtenerLista();
                             <p class="font-italic text-muted mb-0 small"><?php echo $servicio->getDescripcion() ?></p>
                             <h6 class="font-weight-bold my-2">$ <?php echo $servicio->getCosto() ?></h6>
                         </div>
-
-                        <img  title="Evento turistico en Ahome" alt="Turismo en Ahome" onclick="location.href ='http://localhost/sitio-web-proyecto/detalles.php?id=<?php echo $servicio->getId() ?>';" src="./img/paisaje.jpg" alt="">
+                        <?php 
+                      $directory="./controlador/fotosServicio/".$servicio->getId();
+                      $dirint = dir($directory);
+                      while (($archivo = $dirint->read()) !== false)
+                      {
+                        $extension = strtolower(pathinfo($archivo ,PATHINFO_EXTENSION));
+                        if($extension=='jpg' || $extension =='png' || $extension == 'gif' || $extension == 'bmp') {                      
+                             echo '<img src="'.$directory."/".$archivo.'" title="Evento turistico en Ahome" alt="Turismo en Ahome" onclick="location.href ='."http://localhost/sitio-web-proyecto/detalles.php?id=".$servicio->getId(). '" >';
+                             //echo '<img src="'.$directory."/".$archivo.'"  title="Evento turistico en Ahome" alt="Turismo en Ahome" onclick="location.href =http://localhost/sitio-web-proyecto/detalles.php?id='echo $servicio->getId(); '"  alt="">';
+                             $dirint->close();
+                            break;
+                          }
+                      }
+                    ?>
+                        <!--<img  title="Evento turistico en Ahome" alt="Turismo en Ahome" onclick="location.href ='http://localhost/sitio-web-proyecto/detalles.php?id=<?php //echo $servicio->getId() ?>';" src="./img/paisaje.jpg" alt="">-->
                     </div>
                 </li>
                 <?php }?>
