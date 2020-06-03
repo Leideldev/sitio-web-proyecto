@@ -32,6 +32,7 @@ if(isset($_POST['mandar']))
                 $dias=concatenacionDeDias();
                 $horario = new Horario($ultimoId,$_POST['de'],$_POST['para'],$dias,$_POST['capa']);
                 $crud_horario->insertar($horario);
+                pasarFotos($ultimoId);
                 //$id_servicio,$de,$para,$dias
                
                 /*$de = $_POST['de'];
@@ -85,6 +86,22 @@ if(isset($_POST['mandar']))
 else
 {
     echo"123";
+}
+function pasarFotos( $ultimoId){
+    $micarpeta = "./fotosServicio/".$ultimoId."";
+    if (!file_exists($micarpeta)) {
+        mkdir($micarpeta, 0777, true);
+        echo "<span style='font-weight:bold;color:green;'>se creo la carpeta<span>";
+    }else{
+        echo "<span style='font-weight:bold;color:red;'>NO  se creo la carpeta<span>";
+    }
+    echo "<span style='font-weight:bold;color:red;'>asfafafafsfas<span>";
+    echo $_FILES['fotukis'][0];
+    $fotos_de_morras  = $_FILES['fotukis'];   
+    foreach( $fotos_de_morras as $value ) {
+        echo "ayudaaa :v";
+        echo $value;
+    }
 }
 function validarCampos(){
     validarSeleccionDias();

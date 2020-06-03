@@ -215,7 +215,7 @@ if(!isset($_SESSION['nombre_usuario']) || $_SESSION['tipo'] != 'publicista')
     <input class="form-control mb-3"  type="number" name="capa" id="capa" placeholder="Capacidad">
 
     Select Image Files to Upload:
-    <input onchange=cambio_fotos() type="file" name="files[]" id="files[]" multiple >
+    <input onchange=cambio_fotos() type="file" name="fotukis" id="fotukis" multiple >
     <div id="fotos"></div>
 
     <div class="form-group">

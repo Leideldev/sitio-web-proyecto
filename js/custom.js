@@ -11,30 +11,29 @@ function cambio_archivo() {
 
 function cambio_fotos(){
     
-    var archivos = document.getElementById('files[]').files;
+    var archivos = document.getElementById('fotukis').files;
     if(archivos.length>0){
         console.log(archivos);
         var file;
-        var etiquetas = "123";
+        var etiquetas = "";
         for (var i = 0; i < archivos.length; i++) {
-            //etiquetas+= "<img src=''>";
-            
+
             file = archivos[i];
 
             var lectorArchivo = new FileReader();
+
             lectorArchivo.onload = function () {
-                //etiquetas= etiquetas+"<img src="+this.result+"> <br>";
-                etiquetas= "a ver entro a la funcion";
+                etiquetas= etiquetas+"<img src="+this.result+"> <br>";
+                //console.log(this.result);
+                //alert("SI ENTRO A LA FUNCION!!!");
+                //console.log("a ver entro a la funcion");
+                //etiquetas= "a ver entro a la funcion";
+                document.getElementById('fotos').innerHTML=etiquetas;
             }
             lectorArchivo.readAsDataURL(file);
-
-            alert(file.name);
+            //alert(file.name);
         }
-        alert(etiquetas);
-        document.getElementById('fotos').innerHTML=etiquetas;
     }
-    
-    //var $fileUpload = $("input[type='file']");
 }
 
 function cerrarSesion() {
